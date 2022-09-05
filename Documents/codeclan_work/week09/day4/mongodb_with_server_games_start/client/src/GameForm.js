@@ -25,14 +25,14 @@ const GameForm = ({addGame}) =>{
             <label htmlFor="name">Name:</label>
             <input  onChange={onChange}type="text" id="name" v-model="name" required/>
 
-            <label htmlFor="playingTime">Playing Time:</label>
+            {/* <label htmlFor="playingTime">Playing Time:</label>
             <input  onChange={onChange}type="number" id="playingTime"  required/>
-
+ç
             <label htmlFor="minNumPlayers">Min Players:</label>
             <input  onChange={onChange}type="number" id="minNumPlayers" required/>
 
             <label htmlFor="maxNumPlayers">Max Players:</label>
-            <input  onChange={onChange}type="number" id="maxNumPlayers"  required/>
+            <input  onChange={onChange}type="number" id="maxNumPlayers"  required/> */}
 
             <input type="submit" value="Save" id="save"/>
 
