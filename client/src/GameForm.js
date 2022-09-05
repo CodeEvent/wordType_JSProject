@@ -8,8 +8,8 @@ const GameForm = ({addGame}) =>{
     const handleSubmit = (e) => {
         e.preventDefault();
         formData["players"] = {};
-        formData["players"]["max"] = formData.maxNumPlayers;
-        formData["players"]["min"] = formData.minNumPlayers;
+        // formData["players"]["max"] = formData.maxNumPlayers;
+        // formData["players"]["min"] = formData.minNumPlayers;
         postGame(formData).then((data) => {
             addGame(data);
         });

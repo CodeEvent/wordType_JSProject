@@ -6,6 +6,7 @@ const GameCard = ({game, deleteGame}) =>{
             <p>Min Players: {game.players.min}</p> */}
             {/* <p>Playing Time: {game.playingTime}</p> */}
             <button onClick={()=>deleteGame(game._id)}> 🗑 </button>
+
         </>
     )
 }
