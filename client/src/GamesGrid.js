@@ -1,18 +1,24 @@
 import GameCard from "./GameCard";
+import Timer from "./Timer";
 
-const GamesGrid = ({games, deleteGame}) =>{
-    if (!games)return <h2>Loading</h2>
-    const gamesList = games.map((game)=>{
+
+
+
+
+const GamesGrid = ({typeWord}) =>{
+    if (!typeWord)return <h2>Loading</h2>
+    const wordList = words.map((typedWord)=>{
         return (
             <>
-                <GameCard game={game} deleteGame={deleteGame} key={game._id}/>
+                <GameCard typeWord={typeWord} key={game._id}/>
                 <hr/>
             </>
         )
     });
     return (
         <>
-            {gamesList}
+            {wordList}
+       
         </>
     );
 }
