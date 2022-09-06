@@ -85,7 +85,7 @@ function App() {
   
 
 
-      <GameForm setTypedWord={setTypedWord}/>
+      <GameForm setTypedWord={setTypedWord} randomWord={randomWord}/>
       <GameCard typedWord={typedWord} />
     </div>
   );
