@@ -1,11 +1,12 @@
 const baseURL = 'http://localhost:9000/api/games/'
 
-export const getTypedWord = () =>{
+export const getGames = () =>{
     return fetch(baseURL)
     .then(res => res.json())
 }
 
-export const postTypedWord = (payload) => {
+export const postGame = (payload) => {
+    console.log("postgame", payload);
     return fetch(baseURL, {
         method: 'POST',
         body: JSON.stringify(payload),
@@ -14,9 +15,8 @@ export const postTypedWord = (payload) => {
     .then(res => res.json())
 }
 
-export const deleteTypeWord = (id) =>{
+export const deleteGame = (id) =>{
     return fetch(baseURL + id, {
         method: 'DELETE'
     })
 }
-

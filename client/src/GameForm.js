@@ -2,13 +2,20 @@ import {useState} from "react";
 
 import {postGame} from "./GamesService";
 
-const GameForm = ({setTypedWord}) =>{
+const GameForm = ({setTypedWord}) => {
 
 
     const handleSubmit = event => {
         event.preventDefault()
         setTypedWord(event.target.word.value)
+        let objectToPost = {
+            "name": event.target.word.value
+            }
+        postGame(objectToPost)
     }
+
+
+
 
 
 

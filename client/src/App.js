@@ -11,6 +11,14 @@ import WordGenerator from './WordGenerator';
 
 function App() {
   
+  // const [games, setGames] = useState([]);
+  // useEffect(()=>{
+  //   getGames()
+  //   .then((data)=>{
+  //     console.log(data);
+  //     setGames(data)
+  //   })
+  // },[]);
 
   const [randomWord, setRandomWord] = useState(null);
 
@@ -51,18 +59,18 @@ function App() {
 
 
 
-  // const addTypedWord = (typedWord) => {
-  //   let temp = typedWord.map(g => g);
-  //   temp.push(typedWord);
-  //   setTypedWord(temp);
+  // const addGame = (game) => {
+  //   let temp = games.map(g => g);
+  //   temp.push(game);
+  //   setGames(temp);
   // }
 
-  // const deleteTypedWord = (id) => {
-  //   apiDeleteTypedWord(id).then(() => {
-  //     let temp = typedWords.map(g => g);
-  //     const toDel = typedWords.map(g => g._id).indexOf(id);
+  // const deleteGame = (id) => {
+  //   apiDeleteGame(id).then(()=>{
+  //     let temp = games.map(g=>g);
+  //     const toDel = games.map(g =>g._id).indexOf(id);
   //     temp.splice(toDel, 1);
-  //     setTypedWord(temp);
+  //     setGames(temp);
   //   })
 
   // }
@@ -73,7 +81,8 @@ function App() {
     <div className="App">
       <WordGenerator randomWord={randomWord} getRandomWord={getRandomWord} />
 
-      
+  
+  
 
 
       <GameForm setTypedWord={setTypedWord}/>
