@@ -1,9 +1,12 @@
 import './App.css';
 import { useEffect, useState } from 'react';
 
-import { getGames, deleteGame as apiDeleteGame } from "./GamesService";
+
+
+
+import { getTypedWords, deleteTypedWord as apiDeleteTypeWord } from "./GamesService";
 import GameForm from "./GameForm";
-import GamesGrid from "./GamesGrid";
+import GameCard from "./GameCard";
 import WordGenerator from './WordGenerator';
 
 function App() {
@@ -11,12 +14,17 @@ function App() {
 
   const [randomWord, setRandomWord] = useState(null);
 
+  const [typedWord, setTypedWord] = useState("...");
+
   useEffect(() => {
     getRandomWord()
   }, []);
 
   const getRandomWord = () => {
     const wordlist = [
+      'melissa',
+      'dog',
+      'name',
       'dog',
       'potato',
       'cow',
@@ -40,18 +48,21 @@ function App() {
   }
 
 
-  // const addGame = (game) => {
-  //   let temp = games.map(g => g);
-  //   temp.push(game);
-  //   setGames(temp);
+
+
+
+  // const addTypedWord = (typedWord) => {
+  //   let temp = typedWord.map(g => g);
+  //   temp.push(typedWord);
+  //   setTypedWord(temp);
   // }
 
-  // const deleteGame = (id) => {
-  //   apiDeleteGame(id).then(() => {
-  //     let temp = games.map(g => g);
-  //     const toDel = games.map(g => g._id).indexOf(id);
+  // const deleteTypedWord = (id) => {
+  //   apiDeleteTypedWord(id).then(() => {
+  //     let temp = typedWords.map(g => g);
+  //     const toDel = typedWords.map(g => g._id).indexOf(id);
   //     temp.splice(toDel, 1);
-  //     setGames(temp);
+  //     setTypedWord(temp);
   //   })
 
   // }
@@ -65,8 +76,8 @@ function App() {
       
 
 
-      {/* <GameForm addGame={addGame} />
-      <GamesGrid games={games} deleteGame={deleteGame} /> */}
+      <GameForm setTypedWord={setTypedWord}/>
+      <GameCard typedWord={typedWord} />
     </div>
   );
 }

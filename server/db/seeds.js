@@ -1,37 +1,19 @@
 use games_hub;
 db.dropDatabase();
 
-db.games.insertMany([
+db.games.insertTypedWord([
   {
-    name: "Love Letter",
-    playingTime: 20,
-    players: {
-      min: 2,
-      max: 4
-    }
-  },
+    typedWord: "Love Letter",
+    },
   {
-    name: "Catan",
-    playingTime: 90,
-    players: {
-      min: 3,
-      max: 4
-    }
-  },
+    typedWord: "Catan",
+ 
+    },
   {
-    name: "Exploding Kittens",
-    playingTime: 15,
-    players: {
-      min: 2,
-      max: 5
-    }
-  },
+    typedWord: "Exploding Kittens",
+
+    },
   {
-    name: "Resistance",
-    playingTime: 30,
-    players: {
-      min: 5,
-      max: 10
+    typedWord: "Resistance",
     }
-  }
 ]);

@@ -9,9 +9,9 @@ app.use(cors());
 MongoClient.connect('mongodb://127.0.0.1:27017', { useUnifiedTopology: true }) 
 .then((client) => { 
   const db = client.db('games_hub');
-  const gamesCollection = db.collection('games');
-  const gamesRouter = createRouter(gamesCollection);
-  app.use('/api/games', gamesRouter);
+  const wordsCollection = db.collection('games');
+  const wordsRouter = createRouter(wordsCollection);
+  app.use('/api/words', wordsRouter);
 })
 .catch(console.error); 
 

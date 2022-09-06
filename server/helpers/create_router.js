@@ -48,8 +48,8 @@ const createRouter = function (collection) {
     const newData = req.body;
     collection
     .insertOne(newData)
-    .then((result) => { //UPDATED
-      res.json(result.ops[0]) //UPDATED
+    .then((result) => { 
+      res.json(result.ops[0]) 
     })
     .catch((err) => {
       console.error(err);
