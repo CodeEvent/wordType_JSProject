@@ -1,68 +1,29 @@
-class Timer {
-    constructor () {
-      this.isRunning = false;
-      this.startTime = 0;
-      this.overallTime = 0;
-    }
-  
-    _getTimeElapsedSinceLastStart () {
-      if (!this.startTime) {
-        return 0;
-      }
-    
-      return Date.now() - this.startTime;
-    }
-  
-    start () {
-      if (this.isRunning) {
-        return console.error('Timer is already running');
-      }
-  
-      this.isRunning = true;
-  
-      this.startTime = Date.now();
-    }
-  
-    stop () {
-      if (!this.isRunning) {
-        return console.error('Timer is already stopped');
-      }
-  
-      this.isRunning = false;
-  
-      this.overallTime = this.overallTime + this._getTimeElapsedSinceLastStart();
-    }
-  
-    reset () {
-      this.overallTime = 0;
-  
-      if (this.isRunning) {
-        this.startTime = Date.now();
-        return;
-      }
-  
-      this.startTime = 0;
-    }
-  
-    getTime () {
-      if (!this.startTime) {
-        return 0;
-      }
-  
-      if (this.isRunning) {
-        return this.overallTime + this._getTimeElapsedSinceLastStart();
-      }
-  
-      return this.overallTime;
-    }
-  }
-  
-  const timer = new Timer();
-  timer.start();
-  setInterval(() => {
-    const timeInSeconds = Math.round(timer.getTime() / 1000);
-    document.getElementById('time').innerText = timeInSeconds;
-  }, 100)
+// const showTyping = () => $('.typing').text('User is typing...');
+// const showIdle = () => $('.typing').text('');
+// const updateTimer = (x) => $('.timer').text(x);
+// const handleTypingStateChange = state =>
+//   state === 1 ? showTyping() : showIdle();
 
+// /*** Program Logic ***/
 
-  export default Timer;
+// const inputEvents$ = Rx.Observable.fromEvent($('#input'), 'input').share();
+
+// // streams to indicate when user is typing or has become idle
+// const typing$ = inputEvents$.mapTo(1);
+// const isIdle$ = inputEvents$.debounceTime(1000).mapTo(0);
+
+// // stream to emit "typing state" change-events
+// const typingState$ = Rx.Observable.merge(typing$, isIdle$)
+//   .distinctUntilChanged()
+//   .share();
+
+// // every second, sample from typingState$
+// // if user is typing, add 1, otherwise 0
+// const timer$ = Rx.Observable
+//   .interval(1000)
+//   .withLatestFrom(typingState$, (tick, typingState) => typingState)
+//   .scan((a, b) => a + b, 0)
+
+// // subscribe to streams
+// timer$.subscribe(updateTimer);
+// typingState$.subscribe(handleTypingStateChange);
