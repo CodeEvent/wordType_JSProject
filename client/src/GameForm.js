@@ -1,42 +1,80 @@
-import {useState} from "react";
+import { useState } from "react";
 
-import {postGame} from "./GamesService";
+import { postGame } from "./GamesService";
 
-const GameForm = ({addGame}) =>{
-    const [formData, setFormData] = useState({});
+const GameForm = ({ setTypedWord, randomWord }) => {
 
-    const handleSubmit = (e) => {
-        e.preventDefault();
-        formData["players"] = {};
-        formData["players"]["max"] = formData.maxNumPlayers;
-        formData["players"]["min"] = formData.minNumPlayers;
-        postGame(formData).then((data) => {
-            addGame(data);
-        });
+
+    const [inputValue, setInputValue] = useState("");
+    const [secondPassed, setSecondPassed] = useState(0);
+    const [inProgress, setInProgress] = useState(false);
+    const [intervalId, setIntervalId] = useState(null);
+
+
+
+
+
+    const startTimer = () => {
+
+        setInProgress(true)
+
+    
+        const timerID = setInterval(() => {
+                setSecondPassed(secondPassed => secondPassed + 1)
+            }, 1000)
+            setIntervalId(timerID)
     }
 
-    const onChange = (e) => {
-        formData[e.target.id] = e.target.value;
-        setFormData(formData);
+
+    const stopTimer = () => {
+        setInProgress(false)
+        clearInterval(intervalId)
     }
 
-    return (
-        <form className="" onSubmit={handleSubmit} method="post">
-            <label htmlFor="name">Name:</label>
-            <input  onChange={onChange}type="text" id="name" v-model="name" required/>
 
-            {/* <label htmlFor="playingTime">Playing Time:</label>
-            <input  onChange={onChange}type="number" id="playingTime"  required/>
-ç
-            <label htmlFor="minNumPlayers">Min Players:</label>
-            <input  onChange={onChange}type="number" id="minNumPlayers" required/>
+        const inputHandleChange = (event) => {
+            setInputValue(event.target.value)
+            if (!inProgress && secondPassed === 0) {
+                startTimer()
+            }
+            if (event.target.value === randomWord) {
+                stopTimer()
+            }
+        }
 
-            <label htmlFor="maxNumPlayers">Max Players:</label>
-            <input  onChange={onChange}type="number" id="maxNumPlayers"  required/> */}
 
-            <input type="submit" value="Save" id="save"/>
 
-        </form>
-    )
-}
+        const handleSubmit = event => {
+            event.preventDefault()
+            setTypedWord(event.target.word.value)
+            let objectToPost = {
+                "name": event.target.word.value
+            }
+            postGame(objectToPost)
+        }
+
+
+
+
+        return (
+
+
+
+
+                <form className="" onSubmit={handleSubmit}>
+                    <label htmlFor="word">Type: </label>
+                    <input value={inputValue} onChange={inputHandleChange} name="word" type="text" id="word" required />
+
+                    <input type="submit" value="Save" id="save" />
+
+                    {
+                        inProgress || (!inProgress && (secondPassed != 0)) ? 
+                        <p>Seconds passed: {secondPassed}</p> : 
+                        null
+                    }
+
+                </form>
+        )
+    }
+
 export default GameForm;

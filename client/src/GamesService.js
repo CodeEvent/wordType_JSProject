@@ -6,6 +6,7 @@ export const getGames = () =>{
 }
 
 export const postGame = (payload) => {
+    console.log("postgame", payload);
     return fetch(baseURL, {
         method: 'POST',
         body: JSON.stringify(payload),
@@ -19,4 +20,3 @@ export const deleteGame = (id) =>{
         method: 'DELETE'
     })
 }
-
